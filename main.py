@@ -72,7 +72,7 @@ async def solve_task2(message: types.Message, state: FSMContext):
 @dp.message(UserState.task3)
 async def solve_task3(message: types.Message, state: FSMContext):
     data = await state.get_data()
-    if message.text == messages[f"task_3_{data['team']}_answer"]:
+    if message.text.lower() == messages[f"task_3_{data['team']}_answer"].lower():
         await bot.send_message(message.chat.id, messages[f"task_4_{data['team']}"])
         await bot.send_message(message.chat.id, messages["task_4"])
         await state.set_state(UserState.finished)
